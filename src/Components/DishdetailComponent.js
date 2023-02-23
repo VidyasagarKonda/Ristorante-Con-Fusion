@@ -43,7 +43,11 @@ const DishDetail = (props) => {
       </div>
       <div className='row'>
         <RenderDish dish={props.dish} />
-        <RenderComments comments={props.comments} />
+        <RenderComments
+          comments={props.comments}
+          addComment={props.addComment}
+          dishId={props.dish.id}
+        />
       </div>
     </div>
   );
@@ -63,7 +67,7 @@ function RenderDish({ dish }) {
   );
 }
 
-function RenderComments({ comments }) {
+function RenderComments({ comments, addComment, dishId }) {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -76,9 +80,8 @@ function RenderComments({ comments }) {
   }
 
   function handleSubmit(values) {
-    console.log('Current State is :' + JSON.stringify(values));
-    alert('Current State is :' + JSON.stringify(values));
     toggleModal();
+    addComment(dishId, values.rating, values.author, values.comment);
   }
 
   if (comments == null) {
@@ -165,14 +168,14 @@ function RenderComments({ comments }) {
               </Col>
             </Row>
             <Row className='form-group'>
-              <Label htmlFor='message' md={2}>
+              <Label htmlFor='comment' md={2}>
                 Comment
               </Label>
             </Row>
             <Row className='form-group'>
               <Col md={12}>
                 <Control.textarea
-                  model='.message'
+                  model='.comment'
                   type='textarea'
                   id='message'
                   name='message'
