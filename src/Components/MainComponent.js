@@ -6,38 +6,18 @@ import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import Contact from './ContactComponent';
 import About from './AboutComponent';
-import { Switch, Redirect, Route, withRouter } from 'react-router-dom';
-import { connect, Connect } from 'react-redux';
+import { connect } from 'react-redux';
 import {
   postComment,
   fetchDishes,
   fetchComments,
   fetchPromos,
+  fetchLeaders,
+  postFeedback,
 } from '../redux/ActionCreators';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { actions } from 'react-redux-form';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-
-const mapStateToProps = (state) => {
-  return {
-    dishes: state.dishes,
-    comments: state.comments,
-    promotions: state.promotions,
-    leaders: state.leaders,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => ({
-  postComment: (dishId, rating, author, comment) =>
-    dispatch(postComment(dishId, rating, author, comment)),
-  fetchDishes: () => {
-    dispatch(fetchDishes());
-  },
-  resetFeedbackForm: () => {
-    dispatch(actions.reset('feedback'));
-  },
-  fetchComments: () => dispatch(fetchComments()),
-  fetchPromos: () => dispatch(fetchPromos()),
-});
 
 class Main extends Component {
   constructor(props) {
@@ -47,7 +27,14 @@ class Main extends Component {
     this.props.fetchDishes();
     this.props.fetchComments();
     this.props.fetchPromos();
+    this.props.fetchLeaders();
   }
+
+  onDishSelect(dishId) {
+    console.log('dishId', dishId);
+    this.setState({ selectedDish: dishId });
+  }
+
   render() {
     const HomePage = () => {
       return (
@@ -62,11 +49,14 @@ class Main extends Component {
           }
           promoLoading={this.props.promotions.isLoading}
           promoErrMess={this.props.promotions.errMess}
-          leader={this.props.leaders.filter((leader) => leader.featured)[0]}
+          leader={
+            this.props.leaders.leaders.filter((leader) => leader.featured)[0]
+          }
+          leaderLoading={this.props.leaders.isLoading}
+          leaderErrMess={this.props.leaders.errMess}
         />
       );
     };
-
     const DishWithId = ({ match }) => {
       return (
         <DishDetail
@@ -85,7 +75,6 @@ class Main extends Component {
         />
       );
     };
-
     return (
       <div>
         <Header />
@@ -102,7 +91,6 @@ class Main extends Component {
                 path='/aboutus'
                 component={() => <About leaders={this.props.leaders} />}
               />
-
               <Route
                 exact
                 path='/menu'
@@ -113,18 +101,60 @@ class Main extends Component {
                 exact
                 path='/contactus'
                 component={() => (
-                  <Contact resetFeedbackForm={this.props.resetFeedbackForm} />
+                  <Contact
+                    resetFeedbackForm={this.props.resetFeedbackForm}
+                    postFeedback={this.props.postFeedback}
+                  />
                 )}
               />
               <Redirect to='/home' />
             </Switch>
           </CSSTransition>
         </TransitionGroup>
-
         <Footer />
       </div>
     );
   }
 }
 
+const mapStateToProps = (state) => ({
+  dishes: state.dishes,
+  comments: state.comments,
+  promotions: state.promotions,
+  leaders: state.leaders,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  postComment: (dishId, rating, author, comment) =>
+    dispatch(postComment(dishId, rating, author, comment)),
+  fetchDishes: () => {
+    dispatch(fetchDishes());
+  },
+  resetFeedbackForm: () => {
+    dispatch(actions.reset('feedback'));
+  },
+  fetchComments: () => dispatch(fetchComments()),
+  fetchPromos: () => dispatch(fetchPromos()),
+  fetchLeaders: () => dispatch(fetchLeaders()),
+  postFeedback: (
+    firstname,
+    lastname,
+    telnum,
+    email,
+    agree,
+    contactType,
+    message
+  ) =>
+    dispatch(
+      postFeedback(
+        firstname,
+        lastname,
+        telnum,
+        email,
+        agree,
+        contactType,
+        message
+      )
+    ),
+});
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));

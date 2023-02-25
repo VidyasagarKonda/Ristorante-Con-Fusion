@@ -3,12 +3,12 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   Button,
-  Label,
   Row,
   Col,
+  Label,
 } from 'reactstrap';
+import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Link } from 'react-router-dom';
-import { Control, Form, Errors, actions } from 'react-redux-form';
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !val || val.length <= len;
@@ -20,23 +20,33 @@ const validEmail = (val) =>
 class Contact extends Component {
   constructor(props) {
     super(props);
-
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(values) {
-    console.log('Current State is :' + JSON.stringify(values));
-    alert('Current State is :' + JSON.stringify(values));
+    console.log(JSON.stringify(values));
+    alert(JSON.stringify(values));
     this.props.resetFeedbackForm();
+    // event.preventDefault();
+    this.props
+      .postFeedback(
+        values.firstname,
+        values.lastname,
+        values.telnum,
+        values.email,
+        values.agree,
+        values.contactType,
+        values.message
+      )
+      .then(() => this.props.fetchFeedback());
   }
-
   render() {
     return (
       <div className='container'>
         <div className='row'>
           <Breadcrumb>
             <BreadcrumbItem>
-              <Link to={'/home'}>Home</Link>
+              <Link to='/home'>Home</Link>
             </BreadcrumbItem>
             <BreadcrumbItem active>Contact Us</BreadcrumbItem>
           </Breadcrumb>
@@ -93,10 +103,10 @@ class Contact extends Component {
         </div>
         <div className='row row-content'>
           <div className='col-12'>
-            <h3>Send us Your Feedback</h3>
+            <h3>Send us your Feedback</h3>
           </div>
           <div className='col-12 col-md-9'>
-            <Form
+            <LocalForm
               model='feedback'
               onSubmit={(values) => this.handleSubmit(values)}
             >
@@ -222,8 +232,8 @@ class Contact extends Component {
                     <Label check>
                       <Control.checkbox
                         model='.agree'
-                        className='form-checl-input'
                         name='agree'
+                        className='form-check-input'
                       />{' '}
                       <strong>May we contact you?</strong>
                     </Label>
@@ -232,8 +242,8 @@ class Contact extends Component {
                 <Col md={{ size: 3, offset: 1 }}>
                   <Control.select
                     model='.contactType'
-                    className='form-control'
                     name='contactType'
+                    className='form-control'
                   >
                     <option>Tel.</option>
                     <option>Email</option>
@@ -247,7 +257,6 @@ class Contact extends Component {
                 <Col md={10}>
                   <Control.textarea
                     model='.message'
-                    type='textarea'
                     id='message'
                     name='message'
                     rows='12'
@@ -262,7 +271,7 @@ class Contact extends Component {
                   </Button>
                 </Col>
               </Row>
-            </Form>
+            </LocalForm>
           </div>
         </div>
       </div>

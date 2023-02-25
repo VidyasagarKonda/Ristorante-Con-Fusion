@@ -3,37 +3,56 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   Card,
-  CardImg,
   CardBody,
   CardHeader,
   Media,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { Loading } from './LoadingComponent';
+import { baseUrl } from '../Shared/baseUrl';
+import { Fade, Stagger } from 'react-animation-components';
+
+function RenderLeader({ leaderdetails, isLoading, errMess }) {
+  if (isLoading) {
+    return <Loading />;
+  } else if (errMess) {
+    return <h4>{errMess}</h4>;
+  } else
+    return (
+      <Stagger in>
+        <Fade in>
+          <div key={leaderdetails.id} className='col-12 mt-5 container'>
+            <Media tag='list-unstyled' style={{ display: 'flex' }}>
+              <Media className='col-2'>
+                <Media
+                  object
+                  src={baseUrl + leaderdetails.image}
+                  alt={leaderdetails.name}
+                />
+              </Media>
+
+              <Media body className='ml-5'>
+                <Media heading>{leaderdetails.name}</Media>
+                <p>{leaderdetails.designation}</p>
+                <p>{leaderdetails.description}</p>
+              </Media>
+            </Media>
+          </div>
+        </Fade>
+      </Stagger>
+    );
+}
 
 function About(props) {
-  function RenderLeader({ leader }) {
-    const leaders = props.leaders.map((leader) => {
-      return (
-        <div className='row'>
-          <div className='col-1.2  m-1'>
-            <Card>
-              <CardImg width='100%' src={leader.image} alt={leader.name} />
-            </Card>
-          </div>
-          <div className='col-10'>
-            <h3>{leader.name}</h3>
-            <p>{leader.designation}</p>
-            <p>{leader.description}</p>
-          </div>
-        </div>
-      );
-    });
+  const leaders = props.leaders.leaders.map((leader) => {
     return (
-      <div className='container'>
-        <ul className='list-unstyled'>{leaders}</ul>
-      </div>
+      <RenderLeader
+        leaderdetails={leader}
+        isLoading={props.isLoading}
+        errMess={props.errMess}
+      />
     );
-  }
+  });
 
   return (
     <div className='container'>
@@ -94,7 +113,7 @@ function About(props) {
                   You better cut the pizza in four pieces because I'm not hungry
                   enough to eat six.
                 </p>
-                <footer className='blockquote-footer'>
+                <footer className='blockquote-footer mt-1'>
                   Yogi Berra,
                   <cite title='Source Title'>
                     The Wit and Wisdom of Yogi Berra, P. Pepe, Diversion Books,
@@ -110,11 +129,7 @@ function About(props) {
         <div className='col-12'>
           <h2>Corporate Leadership</h2>
         </div>
-        <div className='col-12'>
-          <Media list>
-            <RenderLeader />
-          </Media>
-        </div>
+        <div className='col-12'>{leaders}</div>
       </div>
     </div>
   );
