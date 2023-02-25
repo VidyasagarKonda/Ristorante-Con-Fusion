@@ -19,6 +19,7 @@ import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../Shared/baseUrl';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !val || val.length <= len;
@@ -61,7 +62,7 @@ const DishDetail = (props) => {
           <RenderDish dish={props.dish} />
           <RenderComments
             comments={props.comments}
-            addComment={props.addComment}
+            postComment={props.postComment}
             dishId={props.dish.id}
           />
         </div>
@@ -72,18 +73,25 @@ const DishDetail = (props) => {
 function RenderDish({ dish }) {
   return (
     <div className='col-12 col-md-5 m-1'>
-      <Card>
-        <CardImg top src={baseUrl + dish.image} alt={dish.name} />
-        <CardBody>
-          <CardTitle> {dish.name}</CardTitle>
-          <CardText> {dish.description} </CardText>
-        </CardBody>
-      </Card>
+      <FadeTransform
+        in
+        transformProps={{
+          exitTransform: 'scale(0.5) translateY(-50%)',
+        }}
+      >
+        <Card>
+          <CardImg top src={baseUrl + dish.image} alt={dish.name} />
+          <CardBody>
+            <CardTitle>{dish.name}</CardTitle>
+            <CardText>{dish.description}</CardText>
+          </CardBody>
+        </Card>
+      </FadeTransform>
     </div>
   );
 }
 
-function RenderComments({ comments, addComment, dishId }) {
+function RenderComments({ comments, postComment, dishId }) {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -97,7 +105,7 @@ function RenderComments({ comments, addComment, dishId }) {
 
   function handleSubmit(values) {
     toggleModal();
-    addComment(dishId, values.rating, values.author, values.comment);
+    postComment(dishId, values.rating, values.author, values.comment);
   }
 
   if (comments == null) {
@@ -105,24 +113,28 @@ function RenderComments({ comments, addComment, dishId }) {
   }
   const cmnts = comments.map((comment) => {
     return (
-      <li key={comment.id}>
-        <p>{comment.comment}</p>
-        <p>
-          -- {comment.author} , &nbsp;
-          {new Intl.DateTimeFormat('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: '2-digit',
-          }).format(new Date(comment.date))}
-        </p>
-      </li>
+      <Fade in>
+        <li key={comment.id}>
+          <p>{comment.comment}</p>
+          <p>
+            -- {comment.author} , &nbsp;
+            {new Intl.DateTimeFormat('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: '2-digit',
+            }).format(new Date(comment.date))}
+          </p>
+        </li>
+      </Fade>
     );
   });
 
   return (
     <div className='col-12 col-md-5 m-1'>
       <h4> Comments </h4>
-      <ul className='list-unstyled'>{cmnts}</ul>
+      <ul className='list-unstyled'>
+        <Stagger in>{cmnts}</Stagger>
+      </ul>
       <Button outline onClick={toggleModal}>
         <span className='fa fa-pencil fa-lg'></span>
         Submit Comment
