@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Ristorante-Con-Fusion/static/css/main.416ab836.css",
-    "main.js": "/Ristorante-Con-Fusion/static/js/main.8d80e1cd.js",
+    "main.js": "/Ristorante-Con-Fusion/static/js/main.ea5e8d2f.js",
     "static/js/787.28cb0dcd.chunk.js": "/Ristorante-Con-Fusion/static/js/787.28cb0dcd.chunk.js",
     "static/media/minion2.png": "/Ristorante-Con-Fusion/static/media/minion2.5e12ae978c468665ed57.png",
     "static/media/minion.png": "/Ristorante-Con-Fusion/static/media/minion.8e59a2b99557c20d9709.png",
@@ -28,11 +28,11 @@
     "static/media/alberto2.png": "/Ristorante-Con-Fusion/static/media/alberto2.5e0ccb45e0ccdfe41a02.png",
     "index.html": "/Ristorante-Con-Fusion/index.html",
     "main.416ab836.css.map": "/Ristorante-Con-Fusion/static/css/main.416ab836.css.map",
-    "main.8d80e1cd.js.map": "/Ristorante-Con-Fusion/static/js/main.8d80e1cd.js.map",
+    "main.ea5e8d2f.js.map": "/Ristorante-Con-Fusion/static/js/main.ea5e8d2f.js.map",
     "787.28cb0dcd.chunk.js.map": "/Ristorante-Con-Fusion/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.416ab836.css",
-    "static/js/main.8d80e1cd.js"
+    "static/js/main.ea5e8d2f.js"
   ]
 }
