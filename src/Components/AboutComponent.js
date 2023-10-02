@@ -9,7 +9,7 @@ import {
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
-import { baseUrl } from '../Shared/baseUrl';
+
 import { Fade, Stagger } from 'react-animation-components';
 
 function RenderLeader({ leaderdetails, isLoading, errMess }) {
@@ -21,17 +21,27 @@ function RenderLeader({ leaderdetails, isLoading, errMess }) {
     return (
       <Stagger in>
         <Fade in>
-          <div key={leaderdetails.id} className='col-12 mt-5 container'>
+          <div
+            key={leaderdetails.id}
+            className='col-12 mt-5 container'
+            style={{ position: 'relative' }}
+          >
             <Media tag='list-unstyled' style={{ display: 'flex' }}>
               <Media className='col-2'>
                 <Media
+                  style={{
+                    maxWidth: '80px',
+                    maxHeight: '80px',
+                    position: 'absolute',
+                    marginTop: '8px',
+                  }}
                   object
-                  src={baseUrl + leaderdetails.image}
+                  src={require('../Shared' + leaderdetails.image)}
                   alt={leaderdetails.name}
                 />
               </Media>
 
-              <Media body className='ml-5'>
+              <Media body className='ml-5' style={{ margin: '0px' }}>
                 <Media heading>{leaderdetails.name}</Media>
                 <p>{leaderdetails.designation}</p>
                 <p>{leaderdetails.description}</p>

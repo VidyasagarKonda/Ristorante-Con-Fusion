@@ -18,7 +18,6 @@ import {
 import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Loading } from './LoadingComponent';
-import { baseUrl } from '../Shared/baseUrl';
 import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 const required = (val) => val && val.length;
@@ -80,7 +79,11 @@ function RenderDish({ dish }) {
         }}
       >
         <Card>
-          <CardImg top src={baseUrl + dish.image} alt={dish.name} />
+          <CardImg
+            top
+            src={require('../Shared' + dish.image)}
+            alt={dish.name}
+          />
           <CardBody>
             <CardTitle>{dish.name}</CardTitle>
             <CardText>{dish.description}</CardText>
@@ -92,12 +95,8 @@ function RenderDish({ dish }) {
 }
 
 function RenderComments({ comments, postComment, dishId }) {
-  const [isNavOpen, setIsNavOpen] = useState(false);
+  const [isNavOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  function toggleNav() {
-    setIsNavOpen(!isNavOpen);
-  }
 
   function toggleModal() {
     setIsModalOpen(!isModalOpen);

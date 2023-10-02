@@ -20,9 +20,6 @@ import { actions } from 'react-redux-form';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 class Main extends Component {
-  constructor(props) {
-    super(props);
-  }
   componentDidMount() {
     this.props.fetchDishes();
     this.props.fetchComments();

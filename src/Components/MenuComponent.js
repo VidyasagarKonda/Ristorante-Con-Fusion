@@ -2,8 +2,6 @@ import {
   Card,
   CardImg,
   CardImgOverlay,
-  CardText,
-  CardBody,
   CardTitle,
   Breadcrumb,
   BreadcrumbItem,
@@ -11,15 +9,28 @@ import {
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
-import { baseUrl } from '../Shared/baseUrl';
 
 function RenderMenuItem({ dish, onClick }) {
   return (
     <Card>
       <Link to={`/menu/${dish.id}`}>
-        <CardImg width='100%' src={baseUrl + dish.image} alt={dish.name} />
-        <CardImgOverlay>
-          <CardTitle>{dish.name}</CardTitle>
+        <CardImg
+          width='100%'
+          src={require('../Shared' + dish.image)}
+          alt={dish.name}
+        />
+        <CardImgOverlay style={{ padding: '0px' }}>
+          <CardTitle
+            style={{
+              color: 'black',
+              padding: '10px',
+              backgroundColor: 'white',
+              display: 'inline',
+              borderRadius: '8px',
+            }}
+          >
+            {dish.name}
+          </CardTitle>
         </CardImgOverlay>
       </Link>
     </Card>

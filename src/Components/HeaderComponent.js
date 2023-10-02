@@ -123,7 +123,7 @@ class Header extends Component {
                 />
               </FormGroup>
               <FormGroup>
-                <Label htmlFor='password'>Username</Label>
+                <Label htmlFor='password'>Password</Label>
                 <Input
                   type='password'
                   name='password'
