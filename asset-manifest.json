@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/Ristorante-Con-Fusion/static/css/main.416ab836.css",
+    "main.js": "/Ristorante-Con-Fusion/static/js/main.8d80e1cd.js",
+    "static/js/787.28cb0dcd.chunk.js": "/Ristorante-Con-Fusion/static/js/787.28cb0dcd.chunk.js",
+    "static/media/minion2.png": "/Ristorante-Con-Fusion/static/media/minion2.5e12ae978c468665ed57.png",
+    "static/media/minion.png": "/Ristorante-Con-Fusion/static/media/minion.8e59a2b99557c20d9709.png",
+    "static/media/buffet.png": "/Ristorante-Con-Fusion/static/media/buffet.86c8087f95a33491e308.png",
+    "static/media/uthappizza.png": "/Ristorante-Con-Fusion/static/media/uthappizza.5ca80bbe2d48564ee43c.png",
+    "static/media/vadonut.png": "/Ristorante-Con-Fusion/static/media/vadonut.7997896ce75509e8419b.png",
+    "static/media/elaicheesecake.png": "/Ristorante-Con-Fusion/static/media/elaicheesecake.2e9e0cc4c0a34cf5a7d1.png",
+    "static/media/minion3.png": "/Ristorante-Con-Fusion/static/media/minion3.cc24e2390bf2b3a4d263.png",
+    "static/media/fly.png": "/Ristorante-Con-Fusion/static/media/fly.9b990f5d7861f2add29b.png",
+    "static/media/zucchipakoda2.png": "/Ristorante-Con-Fusion/static/media/zucchipakoda2.bc0bf2bb485a12fdb3a0.png",
+    "static/media/fontawesome-webfont.svg?v=4.7.0": "/Ristorante-Con-Fusion/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
+    "static/media/alberto.png": "/Ristorante-Con-Fusion/static/media/alberto.c25060bcb34e2cc7be62.png",
+    "static/media/fontawesome-webfont.eot": "/Ristorante-Con-Fusion/static/media/fontawesome-webfont.8b43027f47b20503057d.eot",
+    "static/media/fontawesome-webfont.ttf?v=4.7.0": "/Ristorante-Con-Fusion/static/media/fontawesome-webfont.1e59d2330b4c6deb84b3.ttf",
+    "static/media/fontawesome-webfont.woff?v=4.7.0": "/Ristorante-Con-Fusion/static/media/fontawesome-webfont.f691f37e57f04c152e23.woff",
+    "static/media/fontawesome-webfont.woff2?v=4.7.0": "/Ristorante-Con-Fusion/static/media/fontawesome-webfont.20fd1704ea223900efa9.woff2",
+    "static/media/uthappizza1.png": "/Ristorante-Con-Fusion/static/media/uthappizza1.e3b6414e4292e7f7802a.png",
+    "static/media/buffet2.png": "/Ristorante-Con-Fusion/static/media/buffet2.fe37515a0191a7ef956e.png",
+    "static/media/zucchipakoda.png": "/Ristorante-Con-Fusion/static/media/zucchipakoda.38b043b2ca66266e519a.png",
+    "static/media/vadonut1.png": "/Ristorante-Con-Fusion/static/media/vadonut1.c5cd81441d6a6fb7bda6.png",
+    "static/media/alberto1.png": "/Ristorante-Con-Fusion/static/media/alberto1.82933185f3416a8bee0d.png",
+    "static/media/logo.png": "/Ristorante-Con-Fusion/static/media/logo.23118273af0d4ded32b0.png",
+    "static/media/elaicheesecake1.png": "/Ristorante-Con-Fusion/static/media/elaicheesecake1.79bcea396a9726301c23.png",
+    "static/media/alberto2.png": "/Ristorante-Con-Fusion/static/media/alberto2.5e0ccb45e0ccdfe41a02.png",
+    "index.html": "/Ristorante-Con-Fusion/index.html",
+    "main.416ab836.css.map": "/Ristorante-Con-Fusion/static/css/main.416ab836.css.map",
+    "main.8d80e1cd.js.map": "/Ristorante-Con-Fusion/static/js/main.8d80e1cd.js.map",
+    "787.28cb0dcd.chunk.js.map": "/Ristorante-Con-Fusion/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.416ab836.css",
+    "static/js/main.8d80e1cd.js"
+  ]
+}
