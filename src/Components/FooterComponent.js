@@ -30,49 +30,39 @@ function Footer(props) {
               <br />
               Clear Water Bay, Kowloon
               <br />
-              HONG KONG
+              AREA 51
               <br />
-              <i className='fa fa-phone fa-lg'></i>: +852 1234 5678
+              <i className='fa fa-phone fa-lg'></i>: +000 1234 5678
               <br />
-              <i className='fa fa-fax fa-lg'></i>: +852 8765 4321
+              <i className='fa fa-fax fa-lg'></i>: +000 8765 4321
               <br />
               <i className='fa fa-envelope fa-lg'></i>:{' '}
-              <a href='mailto:confusion@food.net'>confusion@food.net</a>
+              <a href='mailto:vidyasagar.vsk77@gmail.com'>confusion@food.net</a>
             </address>
           </div>
           <div className='col-12 col-sm-4 align-self-center'>
             <div className='text-center'>
-              <a
-                className='btn btn-social-icon btn-google'
-                href='http://google.com/+'
-              >
-                <i className='fa fa-google-plus'></i>
-              </a>
+              
               <a
                 className='btn btn-social-icon btn-facebook'
-                href='http://www.facebook.com/profile.php?id='
+                href='https://www.facebook.com/vidyasagar.konda1/'
               >
                 <i className='fa fa-facebook'></i>
               </a>
               <a
                 className='btn btn-social-icon btn-linkedin'
-                href='http://www.linkedin.com/in/'
+                href='https://www.linkedin.com/in/vidyasagar-konda-188680b9/'
               >
                 <i className='fa fa-linkedin'></i>
               </a>
               <a
                 className='btn btn-social-icon btn-twitter'
-                href='http://twitter.com/'
+                href='https://twitter.com/vidyasagar_in'
               >
                 <i className='fa fa-twitter'></i>
               </a>
-              <a
-                className='btn btn-social-icon btn-google'
-                href='http://youtube.com/'
-              >
-                <i className='fa fa-youtube'></i>
-              </a>
-              <a className='btn btn-social-icon' href='mailto:'>
+             
+              <a className='btn btn-social-icon' href='mailto:vidyasagar.vsk77@gmail.com'>
                 <i className='fa fa-envelope-o'></i>
               </a>
             </div>
